@@ -1,26 +1,32 @@
-import { useEffect, useState } from "react";
-import { computerModel } from "../../../Interfaces";
+import { useEffect } from "react";
+import computerModel from "../../../Interfaces/computerModel";
 import ComputerCard from "./ComputerCard";
+import { useDispatch } from "react-redux";
+import { useGetComputersQuery } from "../../../Apis/computerApi";
+import { setComputer } from "../../../Storage/Redux/computerSlice";
+import { Loading } from "../../../Pages";
 
 function ComputerList() {
-    const [computers, setComputers] = useState<computerModel[]>([]);
+    const dispatch = useDispatch();
+    const { data, isLoading } = useGetComputersQuery(null);
 
     useEffect(() => {
-        fetch("http://176.108.250.203:5001/api/Computer")
-            .then((response) => response.json())
-            .then((data) => {
-                setComputers(data);
-            });
-    }, []);
+        if (!isLoading) {
+            dispatch(setComputer(data));
+        }
+    }, [isLoading]);
+
+    if (isLoading) {
+        return <Loading />;
+    }
 
     return (
         <div className="container row">
-            {computers.length > 0 &&
-                computers.map((computer, index) => (
+            {data.length > 0 &&
+                data.map((computer: computerModel, index: number) => (
                     <ComputerCard computer={computer} key={index} />
                 ))}
         </div>
     );
 }
-
 export default ComputerList;
