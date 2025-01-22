@@ -1,5 +1,6 @@
 import React from "react";
 import computerModel from "../../../Interfaces/computerModel";
+import { Link } from "react-router-dom";
 
 interface Props {
     computer: computerModel;
@@ -14,16 +15,18 @@ function ComputerCard(props: Props) {
             >
                 <div className="card-body pt-2 position-relative">
                     <div className="row col-10 offset-1 p-4">
-                        <img
-                            src={props.computer.image}
-                            alt=""
-                            className="w-100 mt-5 image-box"
-                            style={{
-                                width: "100%",
-                                height: "200px",
-                                objectFit: "contain",
-                            }}
-                        />
+                        <Link to={`/computerDetails/${props.computer.id}`}>
+                            <img
+                                src={props.computer.image}
+                                alt=""
+                                className="w-100 mt-5 image-box"
+                                style={{
+                                    width: "100%",
+                                    height: "200px",
+                                    objectFit: "contain",
+                                }}
+                            />{" "}
+                        </Link>
                     </div>
 
                     <i
@@ -56,7 +59,9 @@ function ComputerCard(props: Props) {
 
                     <div className="text-center">
                         <p className="card-title m-0 text-dark fs-4">
-                            {props.computer.graphicsCard}
+                            <Link to={`/computerDetails/${props.computer.id}`}>
+                                {props.computer.graphicsCard}
+                            </Link>
                         </p>
                         <p
                             className="badge bg-secondary"
