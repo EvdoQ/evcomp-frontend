@@ -20,12 +20,15 @@ function ComputerList() {
         return <Loading />;
     }
 
+    if (!data || data.length === 0) {
+        return <p className="text-danger text-center">No data available.</p>;
+    }
+
     return (
         <div className="container row">
-            {data.length > 0 &&
-                data.map((computer: computerModel, index: number) => (
-                    <ComputerCard computer={computer} key={index} />
-                ))}
+            {data.map((computer: computerModel, index: number) => (
+                <ComputerCard computer={computer} key={index} />
+            ))}
         </div>
     );
 }
