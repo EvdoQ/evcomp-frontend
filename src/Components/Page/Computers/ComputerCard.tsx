@@ -19,10 +19,10 @@ function ComputerCard(props: Props) {
                 </Link>
                 <div className="card-body">
                     <h5 className="card-title fw-bold mb-1">
-                        {props.computer.processor}
+                        {props.computer.title}
                     </h5>
                     <p className="card-text text-muted mb-1">
-                        {props.computer.graphicsCard}
+                        {props.computer.shortDescription}
                     </p>
                     <div className="d-flex align-items-center">
                         <span className="me-2">⭐️⭐️⭐️⭐️⭐️</span>

@@ -1,6 +1,8 @@
 export default interface computerModel {
     id: number;
     image: string;
+    title: string;
+    shortDescription: string;
     description: string;
     price: number;
     processor: string;
