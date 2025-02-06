@@ -1,2 +1,3 @@
 import computerApi from "./computerApi";
-export { computerApi };
+import authApi from "./authApi";
+export { computerApi, authApi };

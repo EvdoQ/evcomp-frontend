@@ -1,2 +1,3 @@
 import computerModel from "./computerModel";
-export type { computerModel };
+import userModel from "./userModel";
+export type { computerModel, userModel };

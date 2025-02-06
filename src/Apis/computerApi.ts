@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const computerApi = createApi({
     reducerPath: "computerApi",
-    baseQuery: fetchBaseQuery({ baseUrl: "http://176.108.250.203:5001/api/" }),
+    baseQuery: fetchBaseQuery({ baseUrl: "https://localhost:7081/api/" }),
     tagTypes: ["Computers"],
     endpoints: (buidler) => ({
         getComputers: buidler.query({
