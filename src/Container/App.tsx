@@ -1,6 +1,13 @@
 import React, { useEffect } from "react";
 import { Footer, Header } from "../Components/Layout";
-import { Home, ComputerDetails, NotFound, Login, Register } from "../Pages";
+import {
+    Home,
+    ComputerDetails,
+    NotFound,
+    Login,
+    Register,
+    Configurator,
+} from "../Pages";
 import { Route, Routes } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setLoggedInUser } from "../Storage/Redux/userAuthSlice";
@@ -27,6 +34,10 @@ function App() {
                     <Route
                         path="/computerDetails/:computerId"
                         element={<ComputerDetails />}
+                    ></Route>
+                    <Route
+                        path="/configurator"
+                        element={<Configurator />}
                     ></Route>
                     <Route path="/login" element={<Login />}></Route>
                     <Route path="/register" element={<Register />}></Route>
