@@ -5,118 +5,96 @@ import Loading from "./Loading";
 
 function ComputerDetails() {
     const navigate = useNavigate();
-    const [quantity, setQuantity] = useState(1);
     const { computerId } = useParams();
     const { data: computer, isLoading } = useGetComputerByIdQuery(computerId);
-    const handleQuantity = (counter: number) => {
-        let newQuantity = quantity + counter;
-        if (newQuantity === 0) newQuantity = 1;
-        setQuantity(newQuantity);
-        return;
-    };
 
     if (isLoading) return <Loading />;
 
     return (
-        <div className="container pt-4 pt-md-5">
+        <div className="container mt-5">
             <div className="row">
-                <div className="col-md-7">
-                    <h2 className="text-success">{computer.name}</h2>
-
-                    <div className="mb-3">
-                        <span className="badge text-bg-dark mx-1">
-                            {computer.category}
-                        </span>
-                        {computer.specialTag && (
-                            <span className="badge text-bg-light mx-1">
-                                {computer.specialTag}
-                            </span>
-                        )}
-                    </div>
-
-                    <p className="fs-5">{computer.description}</p>
-
-                    <ul className="list-group mb-3">
-                        <li className="list-group-item">
-                            <strong>Processor:</strong> {computer.processor}
-                        </li>
-                        <li className="list-group-item">
-                            <strong>Graphics Card:</strong>{" "}
-                            {computer.graphicsCard}
-                        </li>
-                        <li className="list-group-item">
-                            <strong>RAM:</strong> {computer.ram}
-                        </li>
-                        <li className="list-group-item">
-                            <strong>Storage:</strong> {computer.storage}
-                        </li>
-                        <li className="list-group-item">
-                            <strong>Motherboard:</strong> {computer.motherboard}
-                        </li>
-                        <li className="list-group-item">
-                            <strong>Power Supply:</strong>{" "}
-                            {computer.powerSupply}
-                        </li>
-                        <li className="list-group-item">
-                            <strong>Cooler:</strong> {computer.processorCooler}
-                        </li>
-                        <li className="list-group-item">
-                            <strong>Case:</strong> {computer.case} (
-                            {computer.color})
-                        </li>
-                        {computer.hasWiFi && (
-                            <li className="list-group-item">
-                                <strong>Wi-Fi:</strong> Supported
-                            </li>
-                        )}
-                        {computer.hasLightingControl && (
-                            <li className="list-group-item">
-                                <strong>Lighting Control:</strong> Yes
-                            </li>
-                        )}
-                    </ul>
-
-                    <div className="d-flex align-items-center mb-4">
-                        <h4 className="me-3">${computer.price}</h4>
-                        <div className="quantity-box">
-                            <button
-                                className="btn btn-outline-secondary"
-                                onClick={() => handleQuantity(-1)}
-                            >
-                                -
-                            </button>
-                            <span className="mx-3">{quantity}</span>
-                            <button
-                                className="btn btn-outline-secondary"
-                                onClick={() => handleQuantity(1)}
-                            >
-                                +
-                            </button>
-                        </div>
-                    </div>
-
-                    <div className="row">
-                        <div className="col-md-5 mb-2">
-                            <button className="btn btn-success w-100">
-                                Add to Cart
-                            </button>
-                        </div>
-                        <div className="col-md-5">
-                            <button
-                                className="btn btn-secondary w-100"
-                                onClick={() => navigate(-1)}
-                            >
-                                Back
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-md-5 mb-2">
+                <div className="col-md-6 d-flex justify-content-center">
                     <img
                         src={computer.image}
-                        width="100%"
-                        alt="No content"
-                    ></img>
+                        alt="Computer"
+                        className="img-fluid rounded shadow"
+                    />
+                </div>
+                <div className="col-md-6">
+                    <h1 className="fw-bold">{computer.title}</h1>
+                    <p className="text-muted">{computer.shortDescription}</p>
+                    <h2 className="fw-bold">{computer.price}₽</h2>
+                    <button className="btn btn-success w-100 mb-3">
+                        Забронировать
+                    </button>
+                    <h3>Детали</h3>
+                    <hr className="my-2" />
+                    <ul className="text-muted">
+                        <li>Windows 11 Pro</li>
+                        <li>
+                            NVIDIA GeForce RTX 4060 / RTX 4060 Ti / RTX 4070
+                        </li>
+                        <li>Intel Core i5-12400F или AMD Ryzen 5 8400F</li>
+                        <li>16GB / 32GB DDR4 / DDR5 RAM</li>
+                        <li>1TB / 2TB NVMe M.2 SSD</li>
+                        <li>ARGB / Wi-Fi / Bluetooth</li>
+                        <li>80 Plus Bronze</li>
+                        <li>Андервольтинг и разгон видеокарты</li>
+                    </ul>
+                    <hr className="my-2" />
+                </div>
+            </div>
+            <div className="row mt-5">
+                <div className="col-md-6">
+                    <h3>Характеристики</h3>
+                    <hr className="my-2" />
+                    <p>
+                        Процессор: <strong>{computer.processor}</strong>
+                    </p>
+                    <p>
+                        Видеокарта: <strong>{computer.graphicsCard}</strong>
+                    </p>
+                    <p>
+                        Материнская плата:{" "}
+                        <strong>{computer.motherboard}</strong>
+                    </p>
+                    <p>
+                        Оперативная память: <strong>{computer.ram}</strong>
+                    </p>
+                    <p>
+                        Накопитель: <strong>{computer.storage}</strong>
+                    </p>
+                    <p>
+                        Корпус: <strong>{computer.case}</strong>
+                    </p>
+                    <p>
+                        Блок питания: <strong>{computer.powerSupply}</strong>
+                    </p>
+                    <p>
+                        Кулер: <strong>{computer.processorCooler}</strong>
+                    </p>
+                    <hr className="my-2" />
+                </div>
+                <div className="col-md-6">
+                    <h3>Производительность</h3>
+                    <hr className="my-2" />
+                    <p>
+                        Cyberpunk 2077:{" "}
+                        <strong className="text-success">90-140 FPS</strong>
+                    </p>
+                    <p>
+                        PUBG Ultra:{" "}
+                        <strong className="text-success">145-160 FPS</strong>
+                    </p>
+                    <p>
+                        Counter-Strike 2:{" "}
+                        <strong className="text-success">250-300 FPS</strong>
+                    </p>
+                    <p>
+                        GTA V:{" "}
+                        <strong className="text-success">95-110 FPS</strong>
+                    </p>
+                    <hr className="my-2" />
                 </div>
             </div>
         </div>
