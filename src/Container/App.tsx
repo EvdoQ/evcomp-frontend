@@ -7,6 +7,9 @@ import {
     Login,
     Register,
     Configurator,
+    ComputerUpsert,
+    ComputerList,
+    AccessDenied,
 } from "../Pages";
 import { Route, Routes } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -41,6 +44,22 @@ function App() {
                     ></Route>
                     <Route path="/login" element={<Login />}></Route>
                     <Route path="/register" element={<Register />}></Route>
+                    <Route
+                        path="computer/computerlist"
+                        element={<ComputerList />}
+                    ></Route>
+                    <Route
+                        path="/computer/computerupsert/:id"
+                        element={<ComputerUpsert />}
+                    ></Route>
+                    <Route
+                        path="/computer/computerupsert/"
+                        element={<ComputerUpsert />}
+                    ></Route>
+                    <Route
+                        path="/accessdenied"
+                        element={<AccessDenied />}
+                    ></Route>
                     <Route path="*" element={<NotFound />}></Route>
                 </Routes>
             </div>

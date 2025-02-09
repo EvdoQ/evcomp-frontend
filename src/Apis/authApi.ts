@@ -4,6 +4,7 @@ const authApi = createApi({
     reducerPath: "authApi",
     baseQuery: fetchBaseQuery({
         baseUrl: "https://localhost:7081/api/",
+        credentials: "include",
     }),
     endpoints: (builder) => ({
         registerUser: builder.mutation({

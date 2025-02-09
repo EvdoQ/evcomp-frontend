@@ -4,7 +4,8 @@ import ComputerCard from "./ComputerCard";
 import { useDispatch } from "react-redux";
 import { useGetComputersQuery } from "../../../Apis/computerApi";
 import { setComputer } from "../../../Storage/Redux/computerSlice";
-import { Loading } from "../../../Pages";
+
+import { MainLoader } from "../Common";
 
 function ComputerList() {
     const dispatch = useDispatch();
@@ -17,7 +18,7 @@ function ComputerList() {
     }, [isLoading]);
 
     if (isLoading) {
-        return <Loading />;
+        return <MainLoader />;
     }
 
     if (!data || data.length === 0) {

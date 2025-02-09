@@ -60,7 +60,7 @@ function Header() {
                                     aria-current="page"
                                     to="/"
                                 >
-                                    Home
+                                    Главная
                                 </NavLink>
                             </li>
                             <li className="nav-item">
@@ -72,33 +72,17 @@ function Header() {
                                     Конфигуратор
                                 </NavLink>
                             </li>
-                            <li className="nav-item dropdown">
+                            <li className="nav-item">
                                 <a
-                                    className="nav-link dropdown-toggle"
-                                    href="#"
+                                    className="nav-link"
+                                    onClick={() =>
+                                        navigate("computer/computerlist")
+                                    }
                                     role="button"
-                                    data-bs-toggle="dropdown"
                                     aria-expanded="false"
                                 >
-                                    Периферия
+                                    Панель администратора
                                 </a>
-                                <ul className="dropdown-menu">
-                                    <li>
-                                        <a className="dropdown-item" href="#">
-                                            Action
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a className="dropdown-item" href="#">
-                                            Another action
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a className="dropdown-item" href="#">
-                                            Something else here
-                                        </a>
-                                    </li>
-                                </ul>
                             </li>
                             <div
                                 className="d-flex"
@@ -115,7 +99,7 @@ function Header() {
                                                     border: 0,
                                                 }}
                                             >
-                                                Welcome, {userData.fullName}
+                                                Привет, {userData.fullName}
                                             </button>
                                         </li>
                                         <li className="nav-item">
@@ -128,7 +112,7 @@ function Header() {
                                                 }}
                                                 onClick={handleLogout}
                                             >
-                                                Logout
+                                                Выход
                                             </button>
                                         </li>
                                     </>
@@ -141,7 +125,7 @@ function Header() {
                                                 className="nav-link text-white"
                                                 to="/register"
                                             >
-                                                Register
+                                                Зарегистрироваться
                                             </NavLink>
                                         </li>
                                         <li className="nav-item">
@@ -154,7 +138,7 @@ function Header() {
                                                 }}
                                                 to="/login"
                                             >
-                                                Login
+                                                Войти
                                             </NavLink>
                                         </li>
                                     </>

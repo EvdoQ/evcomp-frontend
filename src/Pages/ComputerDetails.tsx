@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import { useGetComputerByIdQuery } from "../Apis/computerApi";
 import { useParams, useNavigate } from "react-router-dom";
-import Loading from "./Loading";
+import { MainLoader } from "../Components/Page/Common";
 
 function ComputerDetails() {
     const navigate = useNavigate();
     const { computerId } = useParams();
     const { data: computer, isLoading } = useGetComputerByIdQuery(computerId);
 
-    if (isLoading) return <Loading />;
+    if (isLoading) return <MainLoader />;
 
     return (
         <div className="container mt-5">
             <div className="row">
-                <div className="col-md-6 d-flex justify-content-center">
+                <div className="col-md-6 justify-content-center">
                     <img
                         src={computer.image}
                         alt="Computer"
